@@ -81,4 +81,22 @@ describe('routes : channels', () => {
       expect(res.body).toMatchSnapshot()
     })
   })
+
+  describe('DELETE /channels/:id', () => {
+    it('deletes channel by id', async () => {
+      const res = await req.del('/channels/1')
+
+      expect(res.status).toBe(200)
+      expect(res.body).toHaveProperty('status')
+      expect(res.body.status).toBe('success')
+      expect(res.body).toHaveProperty('channel')
+      expect(res.body.channel).toHaveProperty('id')
+      expect(res.body.channel.id).toBe(1)
+      expect(res.body.channel).toHaveProperty('name')
+      expect(res.body.channel.name).toBe('general')
+      expect(res.body.channel).toHaveProperty('workspaceId')
+      expect(res.body.channel.workspaceId).toBe(1)
+      expect(res.body).toMatchSnapshot()
+    })
+  })
 })

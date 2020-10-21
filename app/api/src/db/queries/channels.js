@@ -34,4 +34,10 @@ async function updateChannel(req) {
   return channel
 }
 
-export { getAllChannels, getChannelById, createChannel, updateChannel }
+async function deleteChannel(id) {
+  const [channel] = await db('channels').where({ id }).del().returning('*')
+
+  return channel
+}
+
+export { getAllChannels, getChannelById, createChannel, updateChannel, deleteChannel }

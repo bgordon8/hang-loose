@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`routes : channels DELETE /channels/:id deletes channel by id 1`] = `
+Object {
+  "channel": Object {
+    "created_at": "2020-10-21T06:00:00.000Z",
+    "id": 1,
+    "name": "general",
+    "public": true,
+    "updated_at": "2020-10-21T06:00:00.000Z",
+    "workspaceId": 1,
+  },
+  "status": "success",
+}
+`;
+
 exports[`routes : channels GET /channels returns all channels 1`] = `
 Object {
   "channels": Array [
