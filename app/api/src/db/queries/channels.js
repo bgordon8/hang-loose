@@ -11,4 +11,15 @@ async function getChannelById(id) {
 
   return channel
 }
-export { getAllChannels, getChannelById }
+
+async function createChannel(req) {
+  const [channel] = await db('channels')
+    .insert({
+      name: req.body.name,
+      workspaceId: req.body.workspaceId,
+    })
+    .returning('*')
+
+  return channel
+}
+export { getAllChannels, getChannelById, createChannel }

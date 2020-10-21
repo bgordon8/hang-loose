@@ -45,3 +45,17 @@ Object {
   "status": "success",
 }
 `;
+
+exports[`routes : channels POST /channels creates new channel 1`] = `
+Object {
+  "channel": Object {
+    "created_at": Any<String>,
+    "id": 4,
+    "name": "testchannel",
+    "public": true,
+    "updated_at": Any<String>,
+    "workspaceId": 1,
+  },
+  "status": "success",
+}
+`;

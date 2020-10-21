@@ -39,4 +39,28 @@ describe('routes : channels', () => {
       expect(res.body).toMatchSnapshot()
     })
   })
+
+  describe('POST /channels', () => {
+    it('creates new channel', async () => {
+      const res = await req.post('/channels').send({
+        name: 'testchannel',
+        workspaceId: 1,
+      })
+
+      expect(res.status).toBe(200)
+      expect(res.body).toHaveProperty('status')
+      expect(res.body.status).toBe('success')
+      expect(res.body).toHaveProperty('channel')
+      expect(res.body.channel).toHaveProperty('id')
+      expect(res.body.channel.id).toBe(4)
+      expect(res.body.channel).toHaveProperty('name')
+      expect(res.body.channel.name).toBe('testchannel')
+      expect(res.body).toMatchSnapshot({
+        channel: {
+          created_at: expect.any(String),
+          updated_at: expect.any(String),
+        },
+      })
+    })
+  })
 })
