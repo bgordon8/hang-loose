@@ -2,6 +2,7 @@ import express from 'express'
 import { json, urlencoded } from 'body-parser'
 import users from './routes/users'
 import workspaces from './routes/workspaces'
+import channels from './routes/channels'
 
 const app = express()
 
@@ -9,6 +10,7 @@ app.use(json())
 app.use(urlencoded({ extended: false }))
 app.use(users)
 app.use(workspaces)
+app.use(channels)
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(3000, () => {
