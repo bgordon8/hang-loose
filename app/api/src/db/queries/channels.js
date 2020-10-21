@@ -6,4 +6,9 @@ async function getAllChannels() {
   return channels
 }
 
-export { getAllChannels }
+async function getChannelById(id) {
+  const channel = await db('channels').where({ id }).first()
+
+  return channel
+}
+export { getAllChannels, getChannelById }
