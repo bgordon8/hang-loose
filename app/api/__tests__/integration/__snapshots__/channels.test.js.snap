@@ -59,3 +59,17 @@ Object {
   "status": "success",
 }
 `;
+
+exports[`routes : channels PUT /channels/:id updates channel by id 1`] = `
+Object {
+  "channel": Object {
+    "created_at": "2020-10-21T06:00:00.000Z",
+    "id": 1,
+    "name": "updatedname",
+    "public": true,
+    "updated_at": "2020-10-21T06:00:00.000Z",
+    "workspaceId": 1,
+  },
+  "status": "success",
+}
+`;

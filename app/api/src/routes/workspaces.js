@@ -54,7 +54,7 @@ router.post('/workspaces', async (req, res) => {
       workspace,
     })
   } catch (error) {
-    req.status(500).json({
+    res.status(500).json({
       status: 'error',
       message: error.message || 'something went wrong',
     })
@@ -71,7 +71,7 @@ router.put('/workspaces/:id', async (req, res) => {
       workspace,
     })
   } catch (error) {
-    req.status(500).json({
+    res.status(500).json({
       status: 'error',
       message: error.message || 'something went wrong',
     })
@@ -88,7 +88,7 @@ router.delete('/workspaces/:id', async (req, res) => {
       workspace,
     })
   } catch (error) {
-    req.status(500).json({
+    res.status(500).json({
       status: 'error',
       message: error.message || 'something went wrong',
     })

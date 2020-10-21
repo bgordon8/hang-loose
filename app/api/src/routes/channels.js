@@ -1,5 +1,10 @@
 import express from 'express'
-import { getAllChannels, getChannelById, createChannel } from '../db/queries/channels'
+import {
+  getAllChannels,
+  getChannelById,
+  createChannel,
+  updateChannel,
+} from '../db/queries/channels'
 
 const router = express.Router()
 
@@ -55,4 +60,20 @@ router.post('/channels', async (req, res) => {
   }
 })
 
+//PUT
+router.put('/channels/:id', async (req, res) => {
+  try {
+    const channel = await updateChannel(req)
+
+    res.status(200).json({
+      status: 'success',
+      channel,
+    })
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      message: error.message || 'something went wrong',
+    })
+  }
+})
 export default router

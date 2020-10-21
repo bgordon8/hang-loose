@@ -65,7 +65,7 @@ router.put('/users/:id', async (req, res) => {
       user,
     })
   } catch (error) {
-    req.status(500).json({
+    res.status(500).json({
       status: 'error',
       message: error.message || 'something went wrong',
     })
@@ -82,7 +82,7 @@ router.delete('/users/:id', async (req, res) => {
       user,
     })
   } catch (error) {
-    req.status(500).json({
+    res.status(500).json({
       status: 'error',
       message: error.message || 'something went wrong',
     })

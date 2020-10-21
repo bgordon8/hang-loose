@@ -22,4 +22,16 @@ async function createChannel(req) {
 
   return channel
 }
-export { getAllChannels, getChannelById, createChannel }
+
+async function updateChannel(req) {
+  const [channel] = await db('channels')
+    .where({ id: req.params.id })
+    .update({
+      name: req.body.name,
+    })
+    .returning('*')
+
+  return channel
+}
+
+export { getAllChannels, getChannelById, createChannel, updateChannel }
