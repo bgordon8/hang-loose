@@ -35,4 +35,11 @@ async function updateWorkspace(req) {
 
   return workspace
 }
-export { getAllWorkspaces, getWorkspaceById, createWorkspace, updateWorkspace }
+
+async function deleteWorkspace(id) {
+  const [workspace] = await db('workspaces').where({ id }).del().returning('*')
+
+  return workspace
+}
+
+export { getAllWorkspaces, getWorkspaceById, createWorkspace, updateWorkspace, deleteWorkspace }

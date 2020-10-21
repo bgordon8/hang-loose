@@ -88,4 +88,24 @@ describe('routes : workspaces', () => {
       expect(res.body).toMatchSnapshot()
     })
   })
+
+  describe('DELETE /workspaces/:id', () => {
+    it('deletes workspace by id', async () => {
+      const res = await req.del('/workspaces/1')
+
+      expect(res.status).toBe(200)
+      expect(res.body).toHaveProperty('status')
+      expect(res.body.status).toBe('success')
+      expect(res.body).toHaveProperty('workspace')
+      expect(res.body.workspace).toHaveProperty('id')
+      expect(res.body.workspace.id).toBe(1)
+      expect(res.body.workspace).toHaveProperty('name')
+      expect(res.body.workspace.name).toBe('good-guys')
+      expect(res.body.workspace).toHaveProperty('cname')
+      expect(res.body.workspace.cname).toBe('good-guys')
+      expect(res.body.workspace).toHaveProperty('ownerId')
+      expect(res.body.workspace.ownerId).toBe(1)
+      expect(res.body).toMatchSnapshot()
+    })
+  })
 })

@@ -4,6 +4,7 @@ import {
   getWorkspaceById,
   createWorkspace,
   updateWorkspace,
+  deleteWorkspace,
 } from '../db/queries/workspaces'
 
 const router = express.Router()
@@ -78,5 +79,20 @@ router.put('/workspaces/:id', async (req, res) => {
 })
 
 //DELETE
+router.delete('/workspaces/:id', async (req, res) => {
+  try {
+    const workspace = await deleteWorkspace(parseInt(req.params.id))
+
+    res.status(200).json({
+      status: 'success',
+      workspace,
+    })
+  } catch (error) {
+    req.status(500).json({
+      status: 'error',
+      message: error.message || 'something went wrong',
+    })
+  }
+})
 
 export default router

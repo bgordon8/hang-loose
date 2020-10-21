@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`routes : workspaces DELETE /workspaces/:id deletes workspace by id 1`] = `
+Object {
+  "status": "success",
+  "workspace": Object {
+    "cname": "good-guys",
+    "created_at": "2020-10-21T06:00:00.000Z",
+    "id": 1,
+    "name": "good-guys",
+    "ownerId": 1,
+    "updated_at": "2020-10-21T06:00:00.000Z",
+  },
+}
+`;
+
 exports[`routes : workspaces GET /workspaces returns all workspaces 1`] = `
 Object {
   "status": "success",
