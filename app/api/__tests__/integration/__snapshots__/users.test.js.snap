@@ -39,3 +39,45 @@ Object {
   ],
 }
 `;
+
+exports[`routes : users GET /users/:id returns user by id 1`] = `
+Object {
+  "status": "success",
+  "user": Object {
+    "created_at": "1984-07-15T06:00:00.000Z",
+    "email": "leo@email.com",
+    "id": 1,
+    "password": "password123",
+    "updated_at": "1984-07-15T06:00:00.000Z",
+    "username": "Leonardo",
+  },
+}
+`;
+
+exports[`routes : users POST /users creates new user 1`] = `
+Object {
+  "status": "success",
+  "user": Object {
+    "created_at": Any<String>,
+    "email": "test@email.com",
+    "id": 5,
+    "password": "passwordtest",
+    "updated_at": Any<String>,
+    "username": "newUser",
+  },
+}
+`;
+
+exports[`routes : users PUT /users/:id creates new user 1`] = `
+Object {
+  "status": "success",
+  "user": Object {
+    "created_at": "1984-07-15T06:00:00.000Z",
+    "email": "updated@email.com",
+    "id": 1,
+    "password": "password123",
+    "updated_at": "1984-07-15T06:00:00.000Z",
+    "username": "updatedUser",
+  },
+}
+`;

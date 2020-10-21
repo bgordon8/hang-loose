@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAllUsers } from '../db/queries/users'
+import { getAllUsers, getUserById, createUser, updateUser } from '../db/queries/users'
 
 const router = express.Router()
 
@@ -22,8 +22,55 @@ router.get('/users', async (req, res) => {
 })
 
 // GET
+router.get('/users/:id', async (req, res) => {
+  try {
+    const user = await getUserById(parseInt(req.params.id))
+
+    res.status(200).json({
+      status: 'success',
+      user,
+    })
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      message: error.message || 'something went wrong',
+    })
+  }
+})
+
 // POST
+router.post('/users', async (req, res) => {
+  try {
+    const user = await createUser(req)
+
+    res.status(200).json({
+      status: 'success',
+      user,
+    })
+  } catch (error) {
+    req.status(500).json({
+      status: 'error',
+      message: error.message || 'something went wrong',
+    })
+  }
+})
+
 // PUT
+router.put('/users/:id', async (req, res) => {
+  try {
+    const user = await updateUser(req)
+
+    res.status(200).json({
+      status: 'success',
+      user,
+    })
+  } catch (error) {
+    req.status(500).json({
+      status: 'error',
+      message: error.message || 'something went wrong',
+    })
+  }
+})
 // DELETE
 
 export default router
