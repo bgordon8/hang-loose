@@ -5,5 +5,9 @@ async function getAllWorkspaces() {
 
   return workspaces
 }
+async function getWorkspaceById(id) {
+  const workspace = await db('workspaces').where({ id }).first()
 
-export { getAllWorkspaces }
+  return workspace
+}
+export { getAllWorkspaces, getWorkspaceById }
