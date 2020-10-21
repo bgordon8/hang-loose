@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`routes : users DELETE /users/:id deletes user by id 1`] = `
+Object {
+  "status": "success",
+  "user": Object {
+    "created_at": "1984-07-15T06:00:00.000Z",
+    "email": "leo@email.com",
+    "id": 1,
+    "password": "password123",
+    "updated_at": "1984-07-15T06:00:00.000Z",
+    "username": "Leonardo",
+  },
+}
+`;
+
 exports[`routes : users GET /users returns all users 1`] = `
 Object {
   "status": "success",
@@ -68,7 +82,7 @@ Object {
 }
 `;
 
-exports[`routes : users PUT /users/:id creates new user 1`] = `
+exports[`routes : users PUT /users/:id updates user by id 1`] = `
 Object {
   "status": "success",
   "user": Object {

@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAllUsers, getUserById, createUser, updateUser } from '../db/queries/users'
+import { getAllUsers, getUserById, createUser, updateUser, deleteUser } from '../db/queries/users'
 
 const router = express.Router()
 
@@ -71,6 +71,22 @@ router.put('/users/:id', async (req, res) => {
     })
   }
 })
+
 // DELETE
+router.delete('/users/:id', async (req, res) => {
+  try {
+    const user = await deleteUser(parseInt(req.params.id))
+
+    res.status(200).json({
+      status: 'success',
+      user,
+    })
+  } catch (error) {
+    req.status(500).json({
+      status: 'error',
+      message: error.message || 'something went wrong',
+    })
+  }
+})
 
 export default router

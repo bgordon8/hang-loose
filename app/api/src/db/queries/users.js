@@ -39,4 +39,10 @@ async function updateUser(req) {
   return user
 }
 
-export { getAllUsers, getUserById, createUser, updateUser }
+async function deleteUser(id) {
+  const [user] = await db('users').where({ id }).del().returning('*')
+
+  return user
+}
+
+export { getAllUsers, getUserById, createUser, updateUser, deleteUser }
