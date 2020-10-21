@@ -1,5 +1,7 @@
 import db from '../connection'
 
+const slugify = (name) => name.split(' ').join('-').toLowerCase()
+
 async function getAllWorkspaces() {
   const workspaces = await db('workspaces').select()
 
@@ -10,4 +12,16 @@ async function getWorkspaceById(id) {
 
   return workspace
 }
-export { getAllWorkspaces, getWorkspaceById }
+
+async function createWorkspace(req) {
+  const [user] = await db('workspaces')
+    .insert({
+      name: req.body.name,
+      cname: slugify(req.body.name),
+      ownerId: req.body.ownerId,
+    })
+    .returning('*')
+
+  return user
+}
+export { getAllWorkspaces, getWorkspaceById, createWorkspace }

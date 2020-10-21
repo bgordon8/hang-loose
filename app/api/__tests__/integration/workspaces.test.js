@@ -43,4 +43,31 @@ describe('routes : workspaces', () => {
       expect(res.body).toMatchSnapshot()
     })
   })
+
+  //     TODO: comeback and remove ownerId when auth is setup
+  describe('POST /workspaces', () => {
+    it('creates new workspace', async () => {
+      const res = await req.post('/workspaces').send({
+        name: 'testWorkspace',
+        ownerId: 1,
+      })
+
+      expect(res.status).toBe(200)
+      expect(res.body).toHaveProperty('status')
+      expect(res.body.status).toBe('success')
+      expect(res.body).toHaveProperty('workspace')
+      expect(res.body.workspace).toHaveProperty('id')
+      expect(res.body.workspace.id).toBe(3)
+      expect(res.body.workspace).toHaveProperty('name')
+      expect(res.body.workspace.name).toBe('testWorkspace')
+      expect(res.body.workspace).toHaveProperty('cname')
+      expect(res.body.workspace.cname).toBe('testworkspace')
+      expect(res.body).toMatchSnapshot({
+        workspace: {
+          created_at: expect.any(String),
+          updated_at: expect.any(String),
+        },
+      })
+    })
+  })
 })
