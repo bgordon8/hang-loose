@@ -26,9 +26,7 @@ async function createUser(req) {
 
 async function updateUser(req) {
   const [user] = await db('users')
-    .where({
-      id: req.params.id,
-    })
+    .where({ id: req.params.id })
     .update({
       email: req.body.email,
       username: req.body.username,
