@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`routes : users GET /users returns all users 1`] = `
+Object {
+  "status": "success",
+  "users": Array [
+    Object {
+      "created_at": "1984-07-15T06:00:00.000Z",
+      "email": "leo@email.com",
+      "id": 1,
+      "password": "password123",
+      "updated_at": "1984-07-15T06:00:00.000Z",
+      "username": "Leonardo",
+    },
+    Object {
+      "created_at": "1984-07-15T06:00:00.000Z",
+      "email": "don@email.com",
+      "id": 2,
+      "password": "password123",
+      "updated_at": "1984-07-15T06:00:00.000Z",
+      "username": "Donatello",
+    },
+    Object {
+      "created_at": "1984-07-15T06:00:00.000Z",
+      "email": "mikey@email.com",
+      "id": 3,
+      "password": "password123",
+      "updated_at": "1984-07-15T06:00:00.000Z",
+      "username": "Michelangelo",
+    },
+    Object {
+      "created_at": "1984-07-15T06:00:00.000Z",
+      "email": "ralph@email.com",
+      "id": 4,
+      "password": "password123",
+      "updated_at": "1984-07-15T06:00:00.000Z",
+      "username": "Raphael",
+    },
+  ],
+}
+`;

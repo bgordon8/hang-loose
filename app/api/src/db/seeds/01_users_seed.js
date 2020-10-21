@@ -10,24 +10,32 @@ exports.seed = function (knex) {
           username: 'Leonardo',
           email: 'leo@email.com',
           password: 'password123',
+          created_at: new Date('07/15/1984').toISOString(),
+          updated_at: new Date('07/15/1984').toISOString(),
         },
         {
           id: 2,
           username: 'Donatello',
           email: 'don@email.com',
           password: 'password123',
+          created_at: new Date('07/15/1984').toISOString(),
+          updated_at: new Date('07/15/1984').toISOString(),
         },
         {
           id: 3,
           username: 'Michelangelo',
           email: 'mikey@email.com',
           password: 'password123',
+          created_at: new Date('07/15/1984').toISOString(),
+          updated_at: new Date('07/15/1984').toISOString(),
         },
         {
           id: 4,
           username: 'Raphael',
           email: 'ralph@email.com',
           password: 'password123',
+          created_at: new Date('07/15/1984').toISOString(),
+          updated_at: new Date('07/15/1984').toISOString(),
         },
       ])
     })

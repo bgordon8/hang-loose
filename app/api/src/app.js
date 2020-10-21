@@ -1,12 +1,9 @@
 import express from 'express'
+import users from './routes/users'
 
 const app = express()
 
-app.get('/', (req, res) => {
-  res.status(200).json({
-    message: 'hello world!!!! thats whats up!!!',
-  })
-})
+app.use(users)
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(3000, () => {
