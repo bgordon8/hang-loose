@@ -14,7 +14,7 @@ async function getWorkspaceById(id) {
 }
 
 async function createWorkspace(req) {
-  const [user] = await db('workspaces')
+  const [workspace] = await db('workspaces')
     .insert({
       name: req.body.name,
       cname: slugify(req.body.name),
@@ -22,6 +22,17 @@ async function createWorkspace(req) {
     })
     .returning('*')
 
-  return user
+  return workspace
 }
-export { getAllWorkspaces, getWorkspaceById, createWorkspace }
+
+async function updateWorkspace(req) {
+  const [workspace] = await db('workspaces')
+    .where({ id: req.params.id })
+    .update({
+      name: req.body.name,
+    })
+    .returning('*')
+
+  return workspace
+}
+export { getAllWorkspaces, getWorkspaceById, createWorkspace, updateWorkspace }

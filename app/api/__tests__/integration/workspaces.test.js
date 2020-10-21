@@ -70,4 +70,22 @@ describe('routes : workspaces', () => {
       })
     })
   })
+
+  describe('PUT /workspaces/:id', () => {
+    it('updates workspace by id', async () => {
+      const res = await req.put('/workspaces/1').send({
+        name: 'updateWorkspace',
+      })
+
+      expect(res.status).toBe(200)
+      expect(res.body).toHaveProperty('status')
+      expect(res.body.status).toBe('success')
+      expect(res.body).toHaveProperty('workspace')
+      expect(res.body.workspace).toHaveProperty('id')
+      expect(res.body.workspace.id).toBe(1)
+      expect(res.body.workspace).toHaveProperty('name')
+      expect(res.body.workspace.name).toBe('updateWorkspace')
+      expect(res.body).toMatchSnapshot()
+    })
+  })
 })
