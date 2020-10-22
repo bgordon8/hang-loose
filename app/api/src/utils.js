@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs'
 import JWT from 'jsonwebtoken'
 import dayjs from 'dayjs'
 
@@ -17,4 +18,14 @@ async function encodeToken(user) {
   }
 }
 
-export { encodeToken }
+async function comparePass(userPassword, dbPassword) {
+  const valid = await bcrypt.compareSync(userPassword, dbPassword)
+
+  if (valid) {
+    return true
+  } else {
+    throw new Error('invalid credentials')
+  }
+}
+
+export { encodeToken, comparePass }

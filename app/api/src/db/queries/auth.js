@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs'
 import db from '../connection'
+import { comparePass } from '../../utils'
 
 async function createNewUser(req) {
   const salt = bcrypt.genSaltSync()
@@ -17,4 +18,14 @@ async function createNewUser(req) {
   return user
 }
 
-export { createNewUser }
+async function getUserByEmail(req) {
+  const user = await db('users').where({ email: req.body.email }).first()
+  console.log(user)
+
+  await comparePass(req.body.password, user.password)
+  delete user.password
+
+  return user
+}
+
+export { createNewUser, getUserByEmail }
