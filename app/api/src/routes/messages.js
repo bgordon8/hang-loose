@@ -1,5 +1,10 @@
 import express from 'express'
-import { getAllMessages, getMessageById, createMessage } from '../db/queries/messages'
+import {
+  getAllMessages,
+  getMessageById,
+  createMessage,
+  updateMessage,
+} from '../db/queries/messages'
 
 const router = express.Router()
 
@@ -40,6 +45,22 @@ router.get('/messages/:id', async (req, res) => {
 router.post('/messages', async (req, res) => {
   try {
     const message = await createMessage(req)
+
+    res.status(200).json({
+      status: 'success',
+      message,
+    })
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      message: error.message || 'something went wrong',
+    })
+  }
+})
+
+router.put('/messages/:id', async (req, res) => {
+  try {
+    const message = await updateMessage(req)
 
     res.status(200).json({
       status: 'success',
