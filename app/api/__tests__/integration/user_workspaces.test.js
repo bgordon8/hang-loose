@@ -41,4 +41,31 @@ describe('routes : user_workspaces', () => {
       expect(res.body).toMatchSnapshot()
     })
   })
+
+  //POST
+  describe('POST /user_workspaces', () => {
+    it('creates new user_workspace', async () => {
+      const res = await req.post('/user_workspaces').send({
+        workspaceId: 2,
+        userId: 2,
+      })
+      console.log(res.body)
+      expect(res.status).toBe(200)
+      expect(res.body).toHaveProperty('status')
+      expect(res.body.status).toBe('success')
+      expect(res.body).toHaveProperty('user_workspace')
+      expect(res.body.user_workspace).toHaveProperty('id')
+      expect(res.body.user_workspace.id).toBe(4)
+      expect(res.body.user_workspace).toHaveProperty('userId')
+      expect(res.body.user_workspace.userId).toBe(2)
+      expect(res.body.user_workspace).toHaveProperty('workspaceId')
+      expect(res.body.user_workspace.workspaceId).toBe(2)
+      expect(res.body).toMatchSnapshot({
+        user_workspace: {
+          created_at: expect.any(String),
+          updated_at: expect.any(String),
+        },
+      })
+    })
+  })
 })

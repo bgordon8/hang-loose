@@ -1,5 +1,9 @@
 import express from 'express'
-import { getAllUserWorkspaces, getUserWorkspaceById } from '../db/queries/user_workspaces'
+import {
+  getAllUserWorkspaces,
+  getUserWorkspaceById,
+  createUserWorkspace,
+} from '../db/queries/user_workspaces'
 
 const router = express.Router()
 
@@ -25,6 +29,23 @@ router.get('/user_workspaces', async (req, res) => {
 router.get('/user_workspaces/:id', async (req, res) => {
   try {
     const user_workspace = await getUserWorkspaceById(parseInt(req.params.id))
+
+    res.status(200).json({
+      status: 'success',
+      user_workspace,
+    })
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      message: error.message || 'something went wrong',
+    })
+  }
+})
+
+//POST
+router.post('/user_workspaces', async (req, res) => {
+  try {
+    const user_workspace = await createUserWorkspace(req)
 
     res.status(200).json({
       status: 'success',

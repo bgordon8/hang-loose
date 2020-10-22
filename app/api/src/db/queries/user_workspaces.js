@@ -11,4 +11,15 @@ async function getUserWorkspaceById(id) {
 
   return workspace
 }
-export { getAllUserWorkspaces, getUserWorkspaceById }
+
+async function createUserWorkspace(req) {
+  const [workspace] = await db('user_workspaces')
+    .insert({
+      workspaceId: req.body.workspaceId,
+      userId: req.body.userId,
+    })
+    .returning('*')
+  console.log(workspace)
+  return workspace
+}
+export { getAllUserWorkspaces, getUserWorkspaceById, createUserWorkspace }

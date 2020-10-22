@@ -22,4 +22,9 @@ exports.seed = function (knex) {
         },
       ])
     })
+    .then(() => {
+      return knex.raw(
+        "SELECT setval('user_workspaces_id_seq', (SELECT MAX(id) FROM user_workspaces))"
+      )
+    })
 }
