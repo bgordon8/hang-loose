@@ -19,6 +19,12 @@ async function createChannel(req) {
       workspaceId: req.body.workspaceId,
     })
     .returning('*')
+  //   TODO: comment back in once user exists on req
+  // await db('user_channels')
+  // .insert({
+  //   channelId: channel.id,
+  //   userId: user.id
+  // })
 
   return channel
 }

@@ -23,6 +23,13 @@ async function createWorkspace(req) {
     })
     .returning('*')
 
+  //TODO: comment in when user exists
+  //   await db('user_workspaces')
+  //   .insert({
+  //     workspaceId: workspace.id,
+  //     userId: user.id
+  //   }
+
   return workspace
 }
 
