@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`routes : auth POST /auth/register registers a new user and returns a token 1`] = `
+Object {
+  "status": "success",
+  "token": Any<String>,
+}
+`;
