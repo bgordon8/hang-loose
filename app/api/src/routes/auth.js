@@ -24,7 +24,6 @@ router.post('/auth/register', async (req, res) => {
 
 router.post('/auth/login', async (req, res) => {
   try {
-    console.log('auth', req.body)
     const user = await getUserByEmail(req)
 
     const { token } = await encodeToken(user)

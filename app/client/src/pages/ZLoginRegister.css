@@ -1,0 +1,34 @@
+ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.register {
+  background-color: #52364e;
+  color: #f2f2f2;
+  display: grid;
+  justify-content: center;
+  padding: 15px;
+}
+.login {
+  background-color: #52364e;
+  color: #f2f2f2;
+  display: grid;
+  justify-content: center;
+  padding: 15px;
+}
+.register-form {
+  display: grid;
+  justify-content: center;
+  padding: 100px;
+}
+.login-form {
+  display: grid;
+  justify-content: center;
+  padding: 100px;
+}
+
+input {
+  margin: 10px;
+  border-radius: 8px;
+}

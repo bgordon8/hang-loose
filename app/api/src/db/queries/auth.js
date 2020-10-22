@@ -20,7 +20,6 @@ async function createNewUser(req) {
 
 async function getUserByEmail(req) {
   const user = await db('users').where({ email: req.body.email }).first()
-  console.log(user)
 
   await comparePass(req.body.password, user.password)
   delete user.password

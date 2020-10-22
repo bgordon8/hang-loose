@@ -10,7 +10,6 @@ import {
 const router = express.Router()
 
 // GET
-
 router.get('/channels', async (req, res) => {
   try {
     const channels = await getAllChannels()

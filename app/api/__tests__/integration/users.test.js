@@ -7,7 +7,7 @@ describe('routes : users', () => {
   describe('GET /users', () => {
     it('returns all users', async () => {
       const res = await req.get('/users')
-
+      console.log(res.body)
       expect(res.status).toBe(200)
       expect(res.body).toHaveProperty('status')
       expect(res.body.status).toBe('success')
