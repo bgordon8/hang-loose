@@ -6,4 +6,10 @@ async function getAllMessages() {
   return messages
 }
 
-export { getAllMessages }
+async function getMessageById(id) {
+  const message = await db('messages').where({ id }).first()
+
+  return message
+}
+
+export { getAllMessages, getMessageById }
