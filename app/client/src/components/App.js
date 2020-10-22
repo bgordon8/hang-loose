@@ -4,6 +4,7 @@ import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Workspace from '../pages/Workspace'
+import PrivateRoute from './PrivateRoute'
 
 const App = () => {
   return (
@@ -23,9 +24,9 @@ const App = () => {
         </li>
       </ul>
       <Switch>
-        <Route path="/workspace">
+        <PrivateRoute path="/workspace">
           <Workspace />
-        </Route>
+        </PrivateRoute>
         <Route path="/register">
           <Register />
         </Route>
