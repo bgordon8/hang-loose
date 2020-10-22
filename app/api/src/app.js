@@ -3,7 +3,7 @@ import { json, urlencoded } from 'body-parser'
 import users from './routes/users'
 import workspaces from './routes/workspaces'
 import channels from './routes/channels'
-import user_workspaces from './routes/user_workspaces'
+import messages from './routes/messages'
 
 const app = express()
 
@@ -12,7 +12,7 @@ app.use(urlencoded({ extended: false }))
 app.use(users)
 app.use(workspaces)
 app.use(channels)
-app.use(user_workspaces)
+app.use(messages)
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(3000, () => {

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`routes : messages GET /messages returns all messages 1`] = `
+Object {
+  "messages": Array [
+    Object {
+      "authorId": 1,
+      "channelId": 1,
+      "content": "this is the first message!",
+      "created_at": "2020-10-12T06:00:00.000Z",
+      "id": 1,
+      "updated_at": "2020-10-12T06:00:00.000Z",
+    },
+    Object {
+      "authorId": 2,
+      "channelId": 1,
+      "content": "this is the second message!",
+      "created_at": "2020-10-12T06:00:00.000Z",
+      "id": 2,
+      "updated_at": "2020-10-12T06:00:00.000Z",
+    },
+  ],
+  "status": "success",
+}
+`;
