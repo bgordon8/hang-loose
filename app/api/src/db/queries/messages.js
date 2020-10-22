@@ -12,4 +12,16 @@ async function getMessageById(id) {
   return message
 }
 
-export { getAllMessages, getMessageById }
+async function createMessage(req) {
+  const [message] = await db('messages')
+    .insert({
+      channelId: req.body.channelId,
+      authorId: req.body.authorId,
+      content: req.body.content,
+    })
+    .returning('*')
+
+  return message
+}
+
+export { getAllMessages, getMessageById, createMessage }

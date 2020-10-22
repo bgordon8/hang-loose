@@ -23,4 +23,7 @@ exports.seed = function (knex) {
         },
       ])
     })
+    .then(() => {
+      return knex.raw("SELECT setval('messages_id_seq', (SELECT MAX(id) FROM messages))")
+    })
 }

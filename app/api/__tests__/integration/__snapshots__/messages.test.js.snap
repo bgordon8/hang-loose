@@ -37,3 +37,17 @@ Object {
   "status": "success",
 }
 `;
+
+exports[`routes : messages POST /messages creates new message 1`] = `
+Object {
+  "message": Object {
+    "authorId": 1,
+    "channelId": 1,
+    "content": "new created message!",
+    "created_at": Any<String>,
+    "id": 3,
+    "updated_at": Any<String>,
+  },
+  "status": "success",
+}
+`;
