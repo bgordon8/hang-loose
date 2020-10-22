@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`routes : user_workspaces GET /user_workspaces/:id returns user_workspace by id 1`] = `
+Object {
+  "status": "success",
+  "user_workspace": Object {
+    "id": 1,
+    "true": null,
+    "userId": 1,
+    "workspaceId": 1,
+  },
+}
+`;
+
 exports[`routes : user_workspaces routes : user_workspaces GET /user_workspaces returns all user_workspaces 1`] = `
 Object {
   "status": "success",

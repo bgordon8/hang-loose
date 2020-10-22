@@ -23,4 +23,22 @@ describe('routes : user_workspaces', () => {
       })
     })
   })
+
+  describe('GET /user_workspaces/:id', () => {
+    it('returns user_workspace by id', async () => {
+      const res = await req.get('/user_workspaces/1')
+
+      expect(res.status).toBe(200)
+      expect(res.body).toHaveProperty('status')
+      expect(res.body.status).toBe('success')
+      expect(res.body).toHaveProperty('user_workspace')
+      expect(res.body.user_workspace).toHaveProperty('id')
+      expect(res.body.user_workspace.id).toBe(1)
+      expect(res.body.user_workspace).toHaveProperty('workspaceId')
+      expect(res.body.user_workspace.workspaceId).toBe(1)
+      expect(res.body.user_workspace).toHaveProperty('userId')
+      expect(res.body.user_workspace.userId).toBe(1)
+      expect(res.body).toMatchSnapshot()
+    })
+  })
 })

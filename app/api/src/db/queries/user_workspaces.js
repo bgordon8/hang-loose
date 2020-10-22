@@ -6,4 +6,9 @@ async function getAllUserWorkspaces() {
   return user_workspaces
 }
 
-export { getAllUserWorkspaces }
+async function getUserWorkspaceById(id) {
+  const workspace = await db('user_workspaces').where({ id }).first()
+
+  return workspace
+}
+export { getAllUserWorkspaces, getUserWorkspaceById }
