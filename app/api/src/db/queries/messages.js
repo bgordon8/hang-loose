@@ -36,4 +36,10 @@ async function updateMessage(req) {
 
   return message
 }
-export { getAllMessages, getMessageById, createMessage, updateMessage }
+
+async function deleteMessage(id) {
+  const [message] = await db('messages').where({ id }).del().returning('*')
+
+  return message
+}
+export { getAllMessages, getMessageById, createMessage, updateMessage, deleteMessage }
