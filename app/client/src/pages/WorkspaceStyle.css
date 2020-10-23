@@ -20,10 +20,14 @@ input {
   border: 1px solid #f2f2f2;
 }
 .message-list {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
   padding: 0.2em;
   margin-top: 1em;
   margin-bottom: 1em;
-  background-color: #f2f2f2;
+  background-color: #fff;
+  color: #000;
 }
 .app {
   display: grid;
@@ -72,6 +76,9 @@ input {
   border-bottom: 1px solid #f2f2f2;
 }
 .messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   grid-column: 3;
   grid-row: 2;
   padding: 0 1em;

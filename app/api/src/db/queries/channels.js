@@ -11,6 +11,21 @@ async function getChannelById(id) {
 
   return channel
 }
+async function getMessagesByChannelId(channelId) {
+  const messages = await db('messages')
+    .where({ channelId })
+    .leftJoin('users', 'messages.authorId', 'users.id')
+    .select([
+      'messages.id',
+      'messages.content',
+      'messages.created_at',
+      'users.username',
+      'users.id as authorId',
+    ])
+    .orderBy('messages.created_at', 'DESC')
+
+  return messages
+}
 
 async function createChannel(req) {
   const [channel] = await db('channels')
@@ -46,4 +61,11 @@ async function deleteChannel(id) {
   return channel
 }
 
-export { getAllChannels, getChannelById, createChannel, updateChannel, deleteChannel }
+export {
+  getAllChannels,
+  getChannelById,
+  getMessagesByChannelId,
+  createChannel,
+  updateChannel,
+  deleteChannel,
+}

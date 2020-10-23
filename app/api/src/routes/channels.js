@@ -2,6 +2,7 @@ import express from 'express'
 import {
   getAllChannels,
   getChannelById,
+  getMessagesByChannelId,
   createChannel,
   updateChannel,
   deleteChannel,
@@ -34,6 +35,22 @@ router.get('/channels/:id', async (req, res) => {
     res.status(200).json({
       status: 'success',
       channel,
+    })
+  } catch (error) {
+    res.status(500).json({
+      status: 'error',
+      message: error.message || 'something went wrong',
+    })
+  }
+})
+//GET
+router.get('/channel/:id/messages', async (req, res) => {
+  try {
+    const messages = await getMessagesByChannelId(parseInt(req.params.id))
+
+    res.status(200).json({
+      status: 'success',
+      messages,
     })
   } catch (error) {
     res.status(500).json({
@@ -93,4 +110,5 @@ router.put('/channels/:id', async (req, res) => {
     }
   })
 })
+
 export default router

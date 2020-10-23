@@ -4,6 +4,9 @@ import { NavLink, useParams } from 'react-router-dom'
 import './WorkspaceStyle.css'
 import { fetchUser } from '../actions/auth'
 import Workspaces from '../components/Workspace/Workspaces'
+import Messages from '../containers/Messages'
+import Channels from '../components/Workspace/Channels'
+
 function Workspace({ fetchUser, ...props }) {
   const { workspaceId = 1, channelId = 1 } = useParams()
 
@@ -32,35 +35,14 @@ function Workspace({ fetchUser, ...props }) {
         )
       : 0
   console.log(channelIdx)
-  // const channel = props.user && workspace.channels[channelIdx]
+  const channel = props.user && workspace.channels[channelIdx]
 
   return (
     <div className="app">
       <Workspaces workspaces={workspaces} />
-      <div className="channels box">
-        {workspace &&
-          workspace.channels.map((channel) => (
-            <NavLink
-              key={`channel-${channel.id}`}
-              className="workspace-link"
-              to={`/workspace/${workspaceId}/${channel.id}`}
-            >
-              <p style={{ color: '#fff' }}>{channel.name}</p>
-            </NavLink>
-          ))}
-      </div>
+      <Channels workspace={workspace} />
       <div className="header box">Header</div>
-      <div className="messages box">
-        <ul className="message-list">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
+      <Messages channel={channel} />
       <div className="input box">
         <input type="text" placeholder="Send Message..."></input>
       </div>
