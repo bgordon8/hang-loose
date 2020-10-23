@@ -6,6 +6,7 @@ import { fetchUser } from '../actions/auth'
 import Workspaces from '../components/Workspace/Workspaces'
 import Messages from '../containers/Messages'
 import Channels from '../components/Workspace/Channels'
+import SendMessage from '../containers/SendMessages'
 
 function Workspace({ fetchUser, ...props }) {
   const { workspaceId = 1, channelId = 1 } = useParams()
@@ -41,11 +42,13 @@ function Workspace({ fetchUser, ...props }) {
     <div className="app">
       <Workspaces workspaces={workspaces} />
       <Channels workspace={workspace} />
-      <div className="header box">Header</div>
-      <Messages channel={channel} />
-      <div className="input box">
-        <input type="text" placeholder="Send Message..."></input>
-      </div>
+      {channel && (
+        <>
+          <div className="header box">{channel.name}</div>
+          <Messages channel={channel} />
+          <SendMessage channel={channel} />
+        </>
+      )}
     </div>
   )
 }
