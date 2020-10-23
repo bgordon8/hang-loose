@@ -7,8 +7,14 @@ import logger from 'redux-logger'
 import reduxThunk from 'redux-thunk'
 import reducers from './reducers'
 import App from './components/App'
+import { AUTH_USER } from './actions/types'
 
 const store = applyMiddleware(logger, reduxThunk)(createStore)(reducers)
+const token = localStorage.getItem('token')
+
+if (token) {
+  store.dispatch({ type: AUTH_USER })
+}
 
 ReactDOM.render(
   <React.StrictMode>
