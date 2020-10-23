@@ -37,6 +37,17 @@ input {
 .teams {
   background-color: #362233;
 }
+.workspace-link {
+  color: #fff;
+}
+
+.workspace-link:focus,
+.workspace-link:hover,
+.workspace-link:visited,
+.workspace-link:link,
+.workspace-link:active {
+  text-decoration: none;
+}
 .channels {
   background-color: #52364e;
 }

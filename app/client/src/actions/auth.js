@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { AUTH_USER } from './types'
+import { AUTH_USER, FETCH_USER } from './types'
 
 export const loginUser = (values, cb) => {
   return async (dispatch) => {
@@ -13,6 +13,23 @@ export const loginUser = (values, cb) => {
 
       localStorage.setItem('token', res.data.token)
       cb()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+export const fetchUser = () => {
+  return async (dispatch) => {
+    try {
+      const token = localStorage.getItem('token')
+      const res = await axios.get('http://localhost:3000/auth/user', {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+
+      dispatch({ type: FETCH_USER, payload: res.data.user })
     } catch (error) {
       console.log(error)
     }

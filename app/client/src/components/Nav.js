@@ -1,19 +1,26 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { UNAUTH_USER } from '../actions/types'
 
 function Nav(props) {
-  console.log(props)
+  const history = useHistory()
+  const handleLogOut = () => {
+    localStorage.removeItem('token')
+    props.dispatch({ type: UNAUTH_USER })
+    history.push('/login')
+  }
   return (
     <div>
-      {props.auth.authenticated ? (
+      {props.auth.authenticated && props.auth.user ? (
         <>
           <li>
             <Link to="/workspace">Workspace</Link>
           </li>
           <li>
-            <button>Logout</button>
+            <button onClick={handleLogOut}>Logout</button>
           </li>
+          <li>{props.auth.user.username}</li>
         </>
       ) : (
         <>

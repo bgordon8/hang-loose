@@ -50,6 +50,19 @@ router.get('/auth/user', async (req, res) => {
       .where({ id: payload.sub })
       .first(['id', 'username', 'email', 'created_at', 'updated_at'])
 
+    const workspaces = await db('workspaces')
+      .where({ ownerId: user.id })
+      .select([
+        'workspaces.id',
+        'workspaces.name',
+        'workspaces.cname',
+        db.raw('json_agg(channels.*) as channels'),
+      ])
+      .leftJoin('channels', 'workspaces.id', 'channels.workspaceId')
+      .groupBy('workspaces.id')
+
+    user.workspaces = workspaces
+
     res.status(200).json({
       status: 'success',
       user,

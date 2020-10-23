@@ -6,20 +6,24 @@ import Register from '../pages/Register'
 import Workspace from '../pages/Workspace'
 import PrivateRoute from './PrivateRoute'
 import Nav from './Nav'
+
 const App = () => {
   return (
     <>
       <Nav />
       <Switch>
-        <PrivateRoute path="/workspace">
+        <PrivateRoute path="/workspace/:workspaceId?/:channelId?">
           <Workspace />
         </PrivateRoute>
+
         <Route path="/register">
           <Register />
         </Route>
+
         <Route path="/login">
           <Login />
         </Route>
+
         <Route path="/">
           <Home />
         </Route>
