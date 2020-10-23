@@ -26,7 +26,7 @@ input {
   padding: 0.2em;
   margin-top: 1em;
   margin-bottom: 1em;
-  background-color: #fff;
+  background-color: #f2f2f2;
   color: #000;
 }
 .app {
@@ -56,7 +56,7 @@ input {
   background-color: #52364e;
 }
 .messages {
-  background-color: #fff;
+  background-color: #f2f2f2;
 }
 .write {
   background-color: #f2f2f2;
@@ -76,6 +76,7 @@ input {
   border-bottom: 1px solid #f2f2f2;
 }
 .messages {
+  background-color: #f2f2f2;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

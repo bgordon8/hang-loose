@@ -11,11 +11,13 @@ function SendMessages({ channel, ...props }) {
       channelId: channel.id,
       content: message,
     })
+    setMessage('')
   }
 
   return (
     <div className="input box">
       <input
+        style={{ width: '64%' }}
         onKeyDown={(e) => {
           if (e.keyCode === 13) {
             handleSubmit(e)

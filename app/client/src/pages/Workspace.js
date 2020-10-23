@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { NavLink, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import './WorkspaceStyle.css'
 import { fetchUser } from '../actions/auth'
 import Workspaces from '../components/Workspace/Workspaces'
@@ -25,7 +25,8 @@ function Workspace({ fetchUser, ...props }) {
   const workspaceIdx =
     props.user && workspaceId
       ? props.user.workspaces.findIndex((workspace) => workspace.id === parseInt(workspaceId))
-      : 0
+      : 1
+  console.log(workspaceIdx)
 
   const workspace = props.user && props.user.workspaces[workspaceIdx]
 
@@ -34,7 +35,7 @@ function Workspace({ fetchUser, ...props }) {
       ? props.user.workspaces[workspaceIdx].channels.findIndex(
           (channel) => channel.id === parseInt(channelId)
         )
-      : 0
+      : 1
   console.log(channelIdx)
   const channel = props.user && workspace.channels[channelIdx]
 

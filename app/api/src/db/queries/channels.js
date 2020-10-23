@@ -22,7 +22,7 @@ async function getMessagesByChannelId(channelId) {
       'users.username',
       'users.id as authorId',
     ])
-    .orderBy('messages.created_at', 'DESC')
+    .orderBy('messages.created_at', 'ASC')
 
   return messages
 }

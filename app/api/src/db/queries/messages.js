@@ -20,7 +20,8 @@ async function createMessage(req) {
       content: req.body.content,
     })
     .returning('*')
-
+  const user = await db('users').where({ id: message.authorId }).first('username')
+  message.username = user.username
   return message
 }
 
